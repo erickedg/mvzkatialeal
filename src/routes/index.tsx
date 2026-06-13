@@ -13,11 +13,11 @@ import {
   MapPin,
   Mail,
   Instagram,
-  Leaf,
   PawPrint,
 } from "lucide-react";
 import heroVet from "@/assets/hero-vet.jpg";
 import coverageCat from "@/assets/coverage-cat.jpg";
+import logo from "@/assets/logo.svg";
 import { useInView } from "@/hooks/use-in-view";
 import { useScrolled } from "@/hooks/use-scrolled";
 import { useActiveSection } from "@/hooks/use-active-section";
@@ -150,7 +150,7 @@ function Nav() {
         }`}
       >
         <a href="#" className="flex items-center gap-2 px-4 py-2">
-          <Leaf className="size-5 text-accent" strokeWidth={1.75} />
+          <img src={logo} alt="" className="size-9" />
           <span className="font-display text-lg tracking-tight">Katia Leal<span className="text-accent">.</span></span>
         </a>
 
@@ -223,7 +223,7 @@ function Hero() {
           >
             Medicina
             <br />
-            <span className="font-editorial text-muted-foreground">a domicilio.</span>
+            <span className="font-editorial text-olive">a domicilio.</span>
           </h1>
 
           <p
@@ -271,7 +271,7 @@ function Services() {
             <h2 className="mt-6 font-display text-5xl md:text-6xl lg:text-7xl">
               Cuidado integral
               <br />
-              <span className="font-editorial text-muted-foreground">para tu compañero.</span>
+              <span className="font-editorial text-olive">para tu compañero.</span>
             </h2>
           </div>
           <p className="text-muted-foreground text-lg max-w-md lg:justify-self-end leading-relaxed">
@@ -327,7 +327,7 @@ function Process() {
           <h2 className="mt-6 font-display text-5xl md:text-6xl lg:text-7xl">
             Tres pasos
             <br />
-            <span className="font-editorial text-muted-foreground">sin complicaciones.</span>
+            <span className="font-editorial text-olive">sin complicaciones.</span>
           </h2>
         </div>
 
@@ -387,7 +387,7 @@ function Coverage() {
           >
             Toda Ciudad Juárez,
             <br />
-            <span className="font-editorial text-muted-foreground">a tu puerta.</span>
+            <span className="font-editorial text-olive">a tu puerta.</span>
           </h2>
           <p
             className={`mt-8 text-muted-foreground text-lg leading-relaxed max-w-md reveal-right ${visible}`}
@@ -433,7 +433,7 @@ function Contact() {
           <h2 className="mt-6 font-display text-5xl md:text-6xl lg:text-7xl">
             Agenda la visita
             <br />
-            <span className="font-editorial text-muted-foreground">de tu mascota.</span>
+            <span className="font-editorial text-olive">de tu mascota.</span>
           </h2>
         </div>
 
@@ -514,7 +514,7 @@ function Footer() {
       <div className="mx-auto max-w-7xl flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
         <div>
           <div className="flex items-center gap-2">
-            <Leaf className="size-5 text-accent" strokeWidth={1.75} />
+            <img src={logo} alt="" className="size-8" />
             <span className="font-display text-lg">MVZ. Katia Leal<span className="text-accent">.</span></span>
           </div>
           <p className="mt-3 text-sm text-muted-foreground">
