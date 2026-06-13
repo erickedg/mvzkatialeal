@@ -41,28 +41,28 @@
 
 :root {
   --radius: 1rem;
-  /* Deep editorial dark theme */
-  --background: oklch(0.16 0.012 250);
-  --foreground: oklch(0.97 0.005 90);
-  --surface: oklch(0.22 0.012 250);
-  --surface-foreground: oklch(0.97 0.005 90);
-  --card: oklch(0.20 0.012 250);
-  --card-foreground: oklch(0.97 0.005 90);
-  --popover: oklch(0.20 0.012 250);
-  --popover-foreground: oklch(0.97 0.005 90);
-  --primary: oklch(0.97 0.005 90);
-  --primary-foreground: oklch(0.16 0.012 250);
-  --secondary: oklch(0.26 0.012 250);
-  --secondary-foreground: oklch(0.97 0.005 90);
-  --muted: oklch(0.24 0.012 250);
-  --muted-foreground: oklch(0.68 0.012 250);
-  --accent: oklch(0.78 0.13 65); /* warm amber accent */
-  --accent-foreground: oklch(0.16 0.012 250);
-  --destructive: oklch(0.6 0.22 25);
-  --destructive-foreground: oklch(0.97 0.005 90);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.78 0.13 65);
+  /* Light editorial theme */
+  --background: oklch(0.98 0.006 90);
+  --foreground: oklch(0.22 0.012 250);
+  --surface: oklch(0.95 0.008 90);
+  --surface-foreground: oklch(0.22 0.012 250);
+  --card: oklch(0.96 0.007 90);
+  --card-foreground: oklch(0.22 0.012 250);
+  --popover: oklch(0.96 0.007 90);
+  --popover-foreground: oklch(0.22 0.012 250);
+  --primary: oklch(0.22 0.012 250);
+  --primary-foreground: oklch(0.98 0.006 90);
+  --secondary: oklch(0.93 0.008 90);
+  --secondary-foreground: oklch(0.22 0.012 250);
+  --muted: oklch(0.94 0.008 90);
+  --muted-foreground: oklch(0.47 0.012 250);
+  --accent: oklch(0.6 0.15 65); /* deep amber accent */
+  --accent-foreground: oklch(0.22 0.012 250);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.98 0.006 90);
+  --border: oklch(0 0 0 / 8%);
+  --input: oklch(0 0 0 / 10%);
+  --ring: oklch(0.6 0.15 65);
 }
 
 @layer base {
@@ -106,8 +106,8 @@
   gap: 0.5rem;
   padding: 0.5rem 1rem;
   border-radius: 9999px;
-  background: oklch(1 0 0 / 6%);
-  border: 1px solid oklch(1 0 0 / 8%);
+  background: oklch(0 0 0 / 4%);
+  border: 1px solid oklch(0 0 0 / 8%);
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -128,7 +128,7 @@
   transition: transform 0.2s ease, background 0.2s ease;
   &:hover {
     transform: translateY(-1px);
-    background: oklch(0.93 0.005 90);
+    background: oklch(0.32 0.012 250);
   }
 }
 
