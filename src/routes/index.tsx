@@ -1,3 +1,4 @@
+import * as React from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   MessageCircle,
@@ -19,6 +20,7 @@ import heroVet from "@/assets/hero-vet.jpg";
 import coverageCat from "@/assets/coverage-cat.jpg";
 import { useInView } from "@/hooks/use-in-view";
 import { useScrolled } from "@/hooks/use-scrolled";
+import { useActiveSection } from "@/hooks/use-active-section";
 
 const WHATSAPP_URL = "https://wa.me/5216561234567?text=Hola%20Dra.%20Katia%2C%20me%20gustar%C3%ADa%20agendar%20una%20visita%20a%20domicilio";
 const INSTAGRAM_URL = "https://instagram.com/";
@@ -44,6 +46,8 @@ const NAV_LINKS = [
   { href: "#cobertura", label: "Cobertura" },
   { href: "#contacto", label: "Contacto" },
 ];
+
+const SECTION_IDS = NAV_LINKS.map((l) => l.href.slice(1));
 
 const SERVICES = [
   {
@@ -117,6 +121,24 @@ function Landing() {
 
 function Nav() {
   const scrolled = useScrolled();
+  const activeSection = useActiveSection(SECTION_IDS);
+  const linkRefs = React.useRef<(HTMLAnchorElement | null)[]>([]);
+  const [indicator, setIndicator] = React.useState<{ left: number; width: number } | null>(null);
+
+  React.useLayoutEffect(() => {
+    const activeIndex = SECTION_IDS.indexOf(activeSection ?? "");
+    const el = linkRefs.current[activeIndex];
+    if (!el) {
+      setIndicator(null);
+      return;
+    }
+
+    const update = () => setIndicator({ left: el.offsetLeft, width: el.offsetWidth });
+    update();
+
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, [activeSection]);
 
   return (
     <header className="fixed top-4 left-0 right-0 z-50 px-4 nav-in">
@@ -132,12 +154,28 @@ function Nav() {
           <span className="font-display text-lg tracking-tight">Katia Leal<span className="text-accent">.</span></span>
         </a>
 
-        <nav className="hidden md:flex items-center gap-1 rounded-full bg-surface/70 backdrop-blur-md border border-border px-2 py-2">
-          {NAV_LINKS.map((l) => (
+        <nav className="hidden md:flex items-center gap-1 relative px-1 py-1">
+          <span
+            aria-hidden="true"
+            className="absolute inset-y-0 rounded-full bg-surface transition-all duration-300 ease-[cubic-bezier(0.22,0.61,0.36,1)]"
+            style={
+              indicator
+                ? { left: indicator.left, width: indicator.width, opacity: 1 }
+                : { left: 0, width: 0, opacity: 0 }
+            }
+          />
+          {NAV_LINKS.map((l, i) => (
             <a
               key={l.href}
+              ref={(el) => {
+                linkRefs.current[i] = el;
+              }}
               href={l.href}
-              className="px-4 py-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-full"
+              className={`relative z-10 px-4 py-1.5 text-sm transition-colors rounded-full ${
+                activeSection === SECTION_IDS[i]
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
             >
               {l.label}
             </a>
