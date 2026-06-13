@@ -148,3 +148,121 @@
 @utility hero-fade {
   background: linear-gradient(to bottom, transparent 0%, var(--color-background) 100%);
 }
+
+@keyframes hero-slide-left {
+  from { opacity: 0; transform: translateX(-28px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes hero-slide-right {
+  from { opacity: 0; transform: translateX(48px) scale(1.04); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(10px) scale(0.7); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes draw-line {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes reveal-from-left {
+  from { opacity: 0; transform: translateX(-48px) scale(1.04); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes reveal-from-right {
+  from { opacity: 0; transform: translateX(28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pop-dot {
+  from { opacity: 0; transform: scale(0.3); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes nav-drop {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal-line {
+  transform-origin: left;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-in-left {
+    opacity: 0;
+    animation: hero-slide-left 0.65s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+
+  .hero-in-right {
+    opacity: 0;
+    animation: hero-slide-right 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+
+  .reveal-item {
+    opacity: 0;
+  }
+
+  .reveal-item.is-visible {
+    animation: reveal-up 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+
+  .reveal-num.is-visible {
+    animation: pop-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+
+  .reveal-line {
+    transform: scaleX(0);
+  }
+
+  .reveal-line.is-visible {
+    animation: draw-line 0.45s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+
+  .reveal-left {
+    opacity: 0;
+  }
+
+  .reveal-left.is-visible {
+    animation: reveal-from-left 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+
+  .reveal-right {
+    opacity: 0;
+  }
+
+  .reveal-right.is-visible {
+    animation: reveal-from-right 0.65s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+
+  .reveal-dot {
+    opacity: 0;
+  }
+
+  .reveal-dot.is-visible {
+    animation: pop-dot 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+
+  .reveal-pop {
+    opacity: 0;
+  }
+
+  .reveal-pop.is-visible {
+    animation: pop-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+
+  .nav-in {
+    opacity: 0;
+    animation: nav-drop 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+}

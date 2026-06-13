@@ -20,6 +20,9 @@ dist-ssr
 .wrangler/
 .dev.vars
 
+# Superpowers brainstorming
+.superpowers/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
