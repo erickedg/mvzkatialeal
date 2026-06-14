@@ -15,6 +15,7 @@ import {
   Instagram,
   PawPrint,
 } from "lucide-react";
+import { ShinyButton } from "@/components/ui/shiny-button";
 import heroVet from "@/assets/hero-vet.jpg";
 import coverageCat from "@/assets/coverage-cat.jpg";
 import logo from "@/assets/logo.svg";
@@ -22,7 +23,8 @@ import { useInView } from "@/hooks/use-in-view";
 import { useScrolled } from "@/hooks/use-scrolled";
 import { useActiveSection } from "@/hooks/use-active-section";
 
-const WHATSAPP_URL = "https://wa.me/5216561234567?text=Hola%20Dra.%20Katia%2C%20me%20gustar%C3%ADa%20agendar%20una%20visita%20a%20domicilio";
+const WHATSAPP_URL =
+  "https://wa.me/5216561234567?text=Hola%20Dra.%20Katia%2C%20me%20gustar%C3%ADa%20agendar%20una%20visita%20a%20domicilio";
 const INSTAGRAM_URL = "https://instagram.com/";
 const EMAIL = "contacto@katialealvet.com";
 
@@ -105,6 +107,42 @@ const STEPS = [
   },
 ];
 
+// Decorative line-art doodles echoing the squiggle/contour motifs from the
+// brand's business cards. Purely ornamental, kept out of the reading order.
+function DoodleWave({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 600 220"
+      fill="none"
+      aria-hidden="true"
+      className={`text-doodle blur-[3px] ${className ?? ""}`}
+    >
+      <path
+        d="M-10,150 C 60,40 130,0 200,60 C 260,110 300,150 360,100 C 430,40 500,10 560,70 C 590,100 605,125 620,115"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function DoodleArcs({ cx, cy, className }: { cx: number; cy: number; className?: string }) {
+  const radii = [40, 75, 110, 145, 180, 215, 250];
+  return (
+    <svg
+      viewBox="0 0 300 300"
+      fill="none"
+      aria-hidden="true"
+      className={`text-doodle blur-[3px] ${className ?? ""}`}
+    >
+      {radii.map((r) => (
+        <circle key={r} cx={cx} cy={cy} r={r} stroke="currentColor" strokeWidth="1" />
+      ))}
+    </svg>
+  );
+}
+
 function Landing() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
@@ -143,21 +181,20 @@ function Nav() {
   return (
     <header className="fixed top-4 left-0 right-0 z-50 px-4 nav-in">
       <div
-        className={`mx-auto max-w-7xl flex items-center justify-between rounded-full transition-all duration-300 ${
+        className={`mx-auto max-w-7xl flex items-center justify-between rounded-full transition-all duration-500 ${
           scrolled
-            ? "bg-surface/80 backdrop-blur-md border border-border shadow-lg shadow-black/20 px-2 py-2"
+            ? "bg-background/60 backdrop-blur-xl backdrop-saturate-200 border border-olive/15 shadow-xl shadow-black/8 px-2 py-2"
             : "border border-transparent px-0 py-0"
         }`}
       >
-        <a href="#" className="flex items-center gap-2 px-4 py-2">
-          <img src={logo} alt="" className="size-9" />
-          <span className="font-display text-lg tracking-tight">Katia Leal<span className="text-accent">.</span></span>
+        <a href="#" className="flex items-center px-4 py-2">
+          <img src={logo} alt="MVZ. Katia Leal — Veterinaria a Domicilio" className="size-11" />
         </a>
 
         <nav className="hidden md:flex items-center gap-1 relative px-1 py-1">
           <span
             aria-hidden="true"
-            className="absolute inset-y-0 rounded-full bg-surface transition-all duration-300 ease-[cubic-bezier(0.22,0.61,0.36,1)]"
+            className="absolute inset-y-0 rounded-full bg-olive/25 transition-all duration-300 ease-[cubic-bezier(0.22,0.61,0.36,1)]"
             style={
               indicator
                 ? { left: indicator.left, width: indicator.width, opacity: 1 }
@@ -196,19 +233,74 @@ function Nav() {
   );
 }
 
+function HeroOrb() {
+  return (
+    <div className="relative size-[600px]">
+      <svg
+        viewBox="0 0 420 420"
+        fill="none"
+        aria-hidden="true"
+        className="absolute inset-0 size-full"
+      >
+        <defs>
+          <linearGradient id="rg-a" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#5f6b2d" />
+            <stop offset="50%" stopColor="#8db59c" />
+            <stop offset="100%" stopColor="#5f6b2d" stopOpacity="0" />
+          </linearGradient>
+          <linearGradient id="rg-b" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#8db59c" />
+            <stop offset="55%" stopColor="#5f6b2d" />
+            <stop offset="100%" stopColor="#8db59c" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <circle
+          className="ring-outer"
+          cx="210"
+          cy="210"
+          r="205"
+          stroke="url(#rg-a)"
+          strokeWidth="4"
+          strokeDasharray="901 387"
+          strokeLinecap="round"
+        />
+        <circle
+          className="ring-mid"
+          cx="210"
+          cy="210"
+          r="187"
+          stroke="url(#rg-b)"
+          strokeWidth="2.5"
+          strokeDasharray="646 529"
+          strokeLinecap="round"
+        />
+        <circle
+          className="ring-inner"
+          cx="210"
+          cy="210"
+          r="167"
+          stroke="url(#rg-a)"
+          strokeWidth="1.5"
+          strokeDasharray="472 577"
+          strokeLinecap="round"
+        />
+      </svg>
+      <div className="absolute inset-[62px] rounded-full overflow-hidden shadow-2xl ring-4 ring-background">
+        <img
+          src={heroVet}
+          alt="MVZ. Katia Leal atendiendo a una mascota"
+          className="size-full object-cover object-top"
+        />
+      </div>
+    </div>
+  );
+}
+
 function Hero() {
   return (
     <section className="relative min-h-screen pt-32 pb-24 overflow-hidden">
-      {/* Background image right side */}
-      <div className="absolute inset-y-0 right-0 w-full lg:w-3/5 pointer-events-none hero-in-right">
-        <img
-          src={heroVet}
-          alt="MVZ. Katia Leal atendiendo a un perro en casa"
-          className="size-full object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 lg:via-background/40 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-40 hero-fade" />
-      </div>
+      <DoodleWave className="absolute -top-4 left-0 w-[420px] md:w-[560px] opacity-70" />
+      <DoodleArcs cx={0} cy={300} className="absolute bottom-0 left-0 w-64 md:w-80 opacity-60" />
 
       <div className="relative mx-auto max-w-7xl px-6 grid lg:grid-cols-2 gap-8 items-center min-h-[80vh]">
         <div className="relative z-10 max-w-xl">
@@ -230,13 +322,18 @@ function Hero() {
             className="mt-8 text-base md:text-lg text-muted-foreground max-w-md leading-relaxed hero-in-left"
             style={{ animationDelay: "0.16s" }}
           >
-            Soy la <span className="text-foreground">MVZ. Katia Leal</span>. Brindo atención veterinaria para perros y gatos en la tranquilidad de tu hogar — desde medicina preventiva hasta dermatología y diagnóstico.
+            Soy la <span className="text-foreground">MVZ. Katia Leal</span>. Brindo atención
+            veterinaria para perros y gatos en la tranquilidad de tu hogar — desde medicina
+            preventiva hasta dermatología y diagnóstico.
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-3 hero-in-left" style={{ animationDelay: "0.24s" }}>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-primary">
+          <div
+            className="mt-10 flex flex-wrap items-center gap-3 hero-in-left"
+            style={{ animationDelay: "0.24s" }}
+          >
+            <ShinyButton href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
               <MessageCircle className="size-4" /> Agendar por WhatsApp
-            </a>
+            </ShinyButton>
             <a href="#servicios" className="btn-ghost">
               Ver servicios <ArrowRight className="size-4" />
             </a>
@@ -249,6 +346,10 @@ function Hero() {
             <MapPin className="size-4 text-accent" />
             Ciudad Juárez, Chihuahua
           </div>
+        </div>
+
+        <div className="hidden lg:flex items-center justify-center hero-in-right">
+          <HeroOrb />
         </div>
       </div>
     </section>
@@ -275,7 +376,8 @@ function Services() {
             </h2>
           </div>
           <p className="text-muted-foreground text-lg max-w-md lg:justify-self-end leading-relaxed">
-            Cada visita está pensada para reducir el estrés de tu mascota y ofrecerte la misma calidad de un consultorio, en casa.
+            Cada visita está pensada para reducir el estrés de tu mascota y ofrecerte la misma
+            calidad de un consultorio, en casa.
           </p>
         </div>
 
@@ -369,7 +471,9 @@ function Coverage() {
   return (
     <section id="cobertura" className="relative py-28 md:py-40 px-6">
       <div ref={ref} className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-16 items-center">
-        <div className={`relative aspect-[4/3] rounded-3xl overflow-hidden border border-border reveal-left ${visible}`}>
+        <div
+          className={`relative aspect-[4/3] rounded-3xl overflow-hidden border border-border reveal-left ${visible}`}
+        >
           <img
             src={coverageCat}
             alt="Gato siendo atendido a domicilio"
@@ -393,7 +497,8 @@ function Coverage() {
             className={`mt-8 text-muted-foreground text-lg leading-relaxed max-w-md reveal-right ${visible}`}
             style={{ animationDelay: "0.16s" }}
           >
-            Atiendo perros y gatos en toda la ciudad. La agenda se reserva con anticipación para garantizar el tiempo y la calidad que tu mascota merece.
+            Atiendo perros y gatos en toda la ciudad. La agenda se reserva con anticipación para
+            garantizar el tiempo y la calidad que tu mascota merece.
           </p>
 
           <ul className="mt-10 space-y-4">
@@ -446,7 +551,8 @@ function Contact() {
             <div className="flex-1">
               <h3 className="font-display text-3xl md:text-4xl">WhatsApp</h3>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                La forma más rápida de agendar. Escanea el código o toca el botón para empezar la conversación.
+                La forma más rápida de agendar. Escanea el código o toca el botón para empezar la
+                conversación.
               </p>
               <a
                 href={WHATSAPP_URL}
@@ -462,7 +568,7 @@ function Contact() {
               style={{ animationDelay: "0.4s" }}
             >
               <img
-                src={`https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=0&data=${encodeURIComponent(WHATSAPP_URL)}`}
+                src={`https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=0&color=605d33&bgcolor=f6f2e5&data=${encodeURIComponent(WHATSAPP_URL)}`}
                 alt="Código QR de WhatsApp"
                 width={200}
                 height={200}
@@ -480,7 +586,9 @@ function Contact() {
               style={{ animationDelay: "0.28s" }}
             >
               <Mail className={`size-6 text-olive ${ICON_HOVER}`} strokeWidth={1.5} />
-              <div className="mt-6 text-sm text-muted-foreground uppercase tracking-widest">Correo</div>
+              <div className="mt-6 text-sm text-muted-foreground uppercase tracking-widest">
+                Correo
+              </div>
               <div className="mt-2 font-display text-xl break-all">{EMAIL}</div>
               <div className="mt-4 inline-flex items-center gap-2 text-sm group-hover:text-olive transition-colors">
                 Enviar correo <ArrowRight className="size-4" />
@@ -495,7 +603,9 @@ function Contact() {
               style={{ animationDelay: "0.41s" }}
             >
               <Instagram className={`size-6 text-olive ${ICON_HOVER}`} strokeWidth={1.5} />
-              <div className="mt-6 text-sm text-muted-foreground uppercase tracking-widest">Instagram</div>
+              <div className="mt-6 text-sm text-muted-foreground uppercase tracking-widest">
+                Instagram
+              </div>
               <div className="mt-2 font-display text-xl">@katialeal.vet</div>
               <div className="mt-4 inline-flex items-center gap-2 text-sm group-hover:text-olive transition-colors">
                 Ver perfil <ArrowRight className="size-4" />
@@ -510,20 +620,26 @@ function Contact() {
 
 function Footer() {
   return (
-    <footer className="px-6 py-16 border-t border-border">
-      <div className="mx-auto max-w-7xl flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-        <div>
-          <div className="flex items-center gap-2">
-            <img src={logo} alt="" className="size-8" />
-            <span className="font-display text-lg">MVZ. Katia Leal<span className="text-accent">.</span></span>
+    <footer className="relative px-6 py-16 border-t border-border overflow-hidden">
+      <DoodleArcs cx={300} cy={0} className="absolute top-0 right-0 w-56 md:w-72 opacity-50" />
+
+      <div className="relative mx-auto max-w-7xl flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+        <div className="flex items-center gap-5">
+          <img src={logo} alt="" className="size-12 shrink-0" />
+          <span className="h-12 w-px bg-sage shrink-0" aria-hidden="true" />
+          <div>
+            <p className="font-serif text-2xl md:text-3xl border-b border-accent/50 pb-1 inline-block">
+              MVZ. Katia Leal
+            </p>
+            <p className="mt-2 font-editorial text-olive">Veterinaria a Domicilio</p>
           </div>
-          <p className="mt-3 text-sm text-muted-foreground">
-            Veterinaria a domicilio · Ciudad Juárez, Chihuahua
+        </div>
+        <div className="text-sm text-muted-foreground md:text-right">
+          <p>Ciudad Juárez, Chihuahua</p>
+          <p className="mt-1">
+            © {new Date().getFullYear()} MVZ. Katia Leal. Todos los derechos reservados.
           </p>
         </div>
-        <p className="text-sm text-muted-foreground">
-          © {new Date().getFullYear()} MVZ. Katia Leal. Todos los derechos reservados.
-        </p>
       </div>
     </footer>
   );

@@ -35,6 +35,9 @@
   --color-surface: var(--surface);
   --color-surface-foreground: var(--surface-foreground);
   --color-olive: var(--olive);
+  --color-sage: var(--sage);
+  --color-gold: var(--gold);
+  --color-doodle: var(--doodle);
 
   --font-sans: "Inter", system-ui, sans-serif;
   --font-serif: "Instrument Serif", "Times New Roman", serif;
@@ -60,6 +63,9 @@
   --accent: oklch(0.6 0.15 65); /* deep amber accent */
   --accent-foreground: oklch(0.22 0.012 250);
   --olive: oklch(0.47 0.06 104); /* olive green from logo */
+  --sage: oklch(0.76 0.05 162); /* sage accent from business card */
+  --gold: oklch(0.80 0.16 88); /* warm gold for shimmer effects */
+  --doodle: oklch(0.8 0.018 92); /* decorative line-art from business card corners */
   --destructive: oklch(0.55 0.22 25);
   --destructive-foreground: oklch(0.98 0.006 90);
   --border: oklch(0 0 0 / 8%);
@@ -212,6 +218,29 @@
 @keyframes nav-drop {
   from { opacity: 0; transform: translateY(-16px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ring-cw {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes ring-ccw {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+.ring-outer,
+.ring-mid,
+.ring-inner {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ring-outer { animation: ring-cw  28s linear infinite; }
+  .ring-mid   { animation: ring-ccw 42s linear infinite; }
+  .ring-inner { animation: ring-cw  20s linear infinite; }
 }
 
 .reveal-line {
