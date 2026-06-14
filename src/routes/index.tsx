@@ -186,7 +186,7 @@ function Nav() {
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium hover:opacity-90 transition flex items-center gap-2"
+          className="rounded-full bg-olive text-primary-foreground px-5 py-2.5 text-sm font-medium hover:opacity-90 transition flex items-center gap-2"
         >
           <MessageCircle className="size-4" />
           <span className="hidden sm:inline">Agendar</span>
@@ -286,7 +286,7 @@ function Services() {
               className={`bg-background p-8 md:p-10 hover:bg-surface/60 transition-colors group reveal-item ${visible}`}
               style={{ animationDelay: `${0.15 + i * 0.13}s` }}
             >
-              <s.icon className={`size-7 text-accent ${ICON_HOVER}`} strokeWidth={1.5} />
+              <s.icon className={`size-7 text-olive ${ICON_HOVER}`} strokeWidth={1.5} />
               <h3 className="mt-8 font-display text-2xl">{s.title}</h3>
               <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
             </article>
@@ -296,14 +296,14 @@ function Services() {
             className={`bg-background p-8 md:p-10 flex flex-col justify-between group reveal-item ${visible}`}
             style={{ animationDelay: `${0.15 + SERVICES.length * 0.13}s` }}
           >
-            <PawPrint className={`size-7 text-accent ${ICON_HOVER}`} strokeWidth={1.5} />
+            <PawPrint className={`size-7 text-olive ${ICON_HOVER}`} strokeWidth={1.5} />
             <div>
               <h3 className="font-display text-2xl">¿Necesitas algo más?</h3>
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 inline-flex items-center gap-2 text-sm text-foreground hover:text-accent transition-colors"
+                className="mt-3 inline-flex items-center gap-2 text-sm text-foreground hover:text-olive transition-colors"
               >
                 Pregúntame <ArrowRight className="size-4" />
               </a>
@@ -479,10 +479,10 @@ function Contact() {
               className={`rounded-3xl border border-border bg-background p-8 hover:bg-surface/60 transition-colors group reveal-item ${visible}`}
               style={{ animationDelay: "0.28s" }}
             >
-              <Mail className={`size-6 text-accent ${ICON_HOVER}`} strokeWidth={1.5} />
+              <Mail className={`size-6 text-olive ${ICON_HOVER}`} strokeWidth={1.5} />
               <div className="mt-6 text-sm text-muted-foreground uppercase tracking-widest">Correo</div>
               <div className="mt-2 font-display text-xl break-all">{EMAIL}</div>
-              <div className="mt-4 inline-flex items-center gap-2 text-sm group-hover:text-accent transition-colors">
+              <div className="mt-4 inline-flex items-center gap-2 text-sm group-hover:text-olive transition-colors">
                 Enviar correo <ArrowRight className="size-4" />
               </div>
             </a>
@@ -494,10 +494,10 @@ function Contact() {
               className={`rounded-3xl border border-border bg-background p-8 hover:bg-surface/60 transition-colors group reveal-item ${visible}`}
               style={{ animationDelay: "0.41s" }}
             >
-              <Instagram className={`size-6 text-accent ${ICON_HOVER}`} strokeWidth={1.5} />
+              <Instagram className={`size-6 text-olive ${ICON_HOVER}`} strokeWidth={1.5} />
               <div className="mt-6 text-sm text-muted-foreground uppercase tracking-widest">Instagram</div>
               <div className="mt-2 font-display text-xl">@katialeal.vet</div>
-              <div className="mt-4 inline-flex items-center gap-2 text-sm group-hover:text-accent transition-colors">
+              <div className="mt-4 inline-flex items-center gap-2 text-sm group-hover:text-olive transition-colors">
                 Ver perfil <ArrowRight className="size-4" />
               </div>
             </a>
