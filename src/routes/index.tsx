@@ -452,13 +452,13 @@ function Contact() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary mt-8"
+                className="btn-olive mt-8"
               >
                 <MessageCircle className="size-4" /> Iniciar conversación
               </a>
             </div>
             <div
-              className={`shrink-0 rounded-2xl bg-primary p-4 reveal-pop ${visible}`}
+              className={`shrink-0 rounded-2xl bg-olive p-4 reveal-pop ${visible}`}
               style={{ animationDelay: "0.4s" }}
             >
               <img

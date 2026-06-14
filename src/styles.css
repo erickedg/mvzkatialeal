@@ -134,6 +134,24 @@
   }
 }
 
+@utility btn-olive {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 1.75rem;
+  border-radius: 9999px;
+  background: var(--color-olive);
+  color: var(--color-primary-foreground);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: transform 0.2s ease, background 0.2s ease;
+  &:hover {
+    transform: translateY(-1px);
+    background: oklch(0.4 0.06 104);
+  }
+}
+
 @utility btn-ghost {
   display: inline-flex;
   align-items: center;
